@@ -1,0 +1,23 @@
+{
+  "name": "filelist",
+  "type": "flogo:activity",
+  "ref": "github.com/radzio123/flogo-components/activity/readfile",
+  "version": "0.1.0",
+  "title": "Read file",
+  "description": "Reads a file",
+  "author": "retgits",
+  "homepage": "https://github.com/radzio123/flogo-components",
+  "inputs": [
+    {
+      "name": "filename",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "string"
+    }
+  ]
+}
