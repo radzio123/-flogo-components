@@ -1,7 +1,7 @@
 {
   "name": "filelist",
   "type": "flogo:activity",
-  "ref": "github.com/radzio123/flogo-components/activity/readfile",
+  "ref": "github.com/radzio123/flogo-components/activity/filelist",
   "version": "0.1.0",
   "title": "Read file",
   "description": "Reads a file",
