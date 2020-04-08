@@ -3,13 +3,24 @@
   "type": "flogo:activity",
   "ref": "github.com/radzio123/flogo-components/activity/filelist",
   "version": "0.1.0",
-  "title": "Read file",
-  "description": "Reads a file",
-  "author": "retgits",
+  "title": "List files Activity",
+  "description": "Lists all files in given directory",
+  "author": "Radzio",
+  "display": {
+    "category": "TIBCO",
+    "visible": true,
+    "smallIcon": "filelist.png",
+    "description": "Lists all files in given directory"
+  },
   "homepage": "https://github.com/radzio123/flogo-components",
   "inputs": [
     {
-      "name": "filename",
+      "name": "directory",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "pattern",
       "type": "string",
       "required": true
     }
@@ -17,7 +28,7 @@
   "outputs": [
     {
       "name": "result",
-      "type": "string"
+      "type": "array"
     }
   ]
 }

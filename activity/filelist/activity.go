@@ -4,7 +4,7 @@ package filelist
 // Imports
 import (
 	"io/ioutil"
-	"os"
+	"regexp"
 
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
@@ -12,12 +12,13 @@ import (
 
 // Constants
 const (
-	ivFilename = "filename"
+	ivDirectory = "directory"
+	ivPattern = "pattern"
 	ovResult   = "result"
 )
 
 // log is the default package logger
-var log = logger.GetLogger("activity-readfile")
+var log = logger.GetLogger("activity-listfiles")
 
 // MyActivity is a stub for your Activity implementation
 type MyActivity struct {
@@ -37,23 +38,28 @@ func (a *MyActivity) Metadata() *activity.Metadata {
 // Eval implements activity.Activity.Eval
 func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
-	// Get the action
-	filename := context.GetInput(ivFilename).(string)
+	// Get the actions
+	directory := context.GetInput(ivDirectory).(string)
+	pattern := context.GetInput(ivPattern).(string)
 
-	// Check if the file exists
-	_, err = os.Stat(filename)
-	if err != nil {
-		log.Debugf("Error while tryinf to find file: %s", err.Error())
-		return false, err
+	files, error := ioutil.ReadDir(directory)
+	
+	if error != nil {
+		log.Errorf("Error while reading files list %s\n", error.Error)
+		return false, error
 	}
 
-	// Read the file
-	fileBytes, err := ioutil.ReadFile(filename)
-	if err != nil {
-		log.Debugf("Error while reading file: %s\n", err.Error())
-		return false, err
+	var all []string
+
+	for _, file := range files {
+		if !file.IsDir() {
+			match, _ := regexp.MatchString(pattern, file.Name())
+			if match {
+				all = append(all, file.Name())
+			}
+		}
 	}
 
-	context.SetOutput(ovResult, string(fileBytes))
+	context.SetOutput(ovResult, all)
 	return true, nil
 }
