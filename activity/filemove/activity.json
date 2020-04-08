@@ -1,0 +1,28 @@
+{
+  "name": "filemove",
+  "type": "flogo:activity",
+  "ref": "github.com/radzio123/flogo-components/activity/filemove",
+  "version": "0.1.0",
+  "title": "Move file",
+  "description": "Moves file from one location to another",
+  "author": "Radzio",
+  "homepage": "https://github.com/radzio123/flogo-components",
+  "inputs": [
+    {
+      "name": "currentPath",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "whereToMove",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "boolean"
+    }
+  ]
+}

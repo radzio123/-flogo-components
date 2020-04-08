@@ -1,0 +1,23 @@
+{
+  "name": "filecreate",
+  "type": "flogo:activity",
+  "ref": "github.com/radzio123/flogo-components/activity/filecreate",
+  "version": "0.1.0",
+  "title": "Create file",
+  "description": "Creates file with given context",
+  "author": "Radzio",
+  "homepage": "https://github.com/radzio123/flogo-components",
+  "inputs": [
+    {
+      "name": "path",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "content",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "outputs": []
+}
