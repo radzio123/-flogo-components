@@ -1,12 +1,17 @@
 {
   "name": "filecreate",
   "type": "flogo:activity",
-  "ref": "github.com/radzio123/flogo-components/activity/filecreate",
-  "version": "0.1.0",
+  "version": "0.10.0",
   "title": "Create file",
   "description": "Creates file with given context",
   "author": "Radzio",
-  "homepage": "https://github.com/radzio123/flogo-components",
+  "display": {
+    "category": "File",
+    "visible": true,
+    "smallIcon": "file.png",
+    "description": "Creates file with given context"
+  },
+  "ref": "github.com/radzio123/flogo-components/File/activity/filecreate",
   "inputs": [
     {
       "name": "path",

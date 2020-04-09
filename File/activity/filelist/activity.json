@@ -1,7 +1,6 @@
 {
   "name": "filelist",
   "type": "flogo:activity",
-  "ref": "github.com/radzio123/flogo-components/activity/File/filelist",
   "version": "0.1.0",
   "title": "List files Activity",
   "description": "Lists all files in given directory",
@@ -12,7 +11,7 @@
     "smallIcon": "filelist.png",
     "description": "Lists all files in given directory"
   },
-  "homepage": "https://github.com/radzio123/flogo-components/activity/filelist",
+  "ref": "github.com/radzio123/flogo-components/File/activity/filelist",
   "inputs": [
     {
       "name": "directory",
