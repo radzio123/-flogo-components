@@ -1,5 +1,4 @@
-// Package readfile implements a file reader for Flogo
-package filelist
+package filemove
 
 // Imports
 import (
@@ -17,7 +16,7 @@ const (
 )
 
 // log is the default package logger
-var log = logger.GetLogger("activity-listfiles")
+var log = logger.GetLogger("activity-movefile")
 
 // MyActivity is a stub for your Activity implementation
 type MyActivity struct {
@@ -44,11 +43,9 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	error := os.Rename(currentPath, whereToMove)
 
 	if error != nil {
-		log.Errorf("Error moving file %s\n", error.Error)
-		context.SetOutput(ovResult, false)
+		log.Errorf("Error moving file %s\n", error)
 		return false, error
 	}
 
-	context.SetOutput(ovResult, true)
 	return true, nil
 }

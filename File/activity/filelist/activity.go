@@ -1,10 +1,11 @@
-// Package readfile implements a file reader for Flogo
 package filelist
 
 // Imports
 import (
 	"io/ioutil"
-	"regexp"
+	"strings"
+
+	"path/filepath"
 
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
@@ -49,13 +50,21 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 		return false, error
 	}
 
+	if !strings.HasSuffix(directory, "/") {
+		directory = directory + "/"
+	}
+
 	var all []string
 
 	for _, file := range files {
 		if !file.IsDir() {
-			match, _ := regexp.MatchString(pattern, file.Name())
+			match, matchError := filepath.Match(pattern, file.Name())
+			if matchError != nil {
+				log.Errorf("Error matching pattern %s\n", matchError.Error)
+				return false, matchError
+			}
 			if match {
-				all = append(all, file.Name())
+				all = append(all, directory + file.Name())
 			}
 		}
 	}

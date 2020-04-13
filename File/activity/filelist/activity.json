@@ -1,7 +1,7 @@
 {
   "name": "filelist",
   "type": "flogo:activity",
-  "version": "0.1.0",
+  "version": "0.10.0",
   "title": "List files Activity",
   "description": "Lists all files in given directory",
   "author": "Radzio",
@@ -20,6 +20,7 @@
     },
     {
       "name": "pattern",
+      "description": "Regular expression to match file names",
       "type": "string",
       "required": true
     }

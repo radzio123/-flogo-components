@@ -40,6 +40,11 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	path := context.GetInput(ivPath).(string)
 	content := context.GetInput(ivContent).(string)
 
+	if _, error := os.Stat("file-exists.go"); error == nil {
+		log.Errorf("File exists")
+		return false, error
+	}
+
 	f, error := os.Create(path)
 	if error != nil {
 		log.Errorf("Error creating file %s\n", error.Error)
